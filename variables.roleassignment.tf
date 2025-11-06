@@ -1,10 +1,10 @@
 variable "role_assignment_enabled" {
   type        = bool
+  default     = false
   description = <<DESCRIPTION
 Whether to create role assignments.
 If enabled, supply the list of role assignments in `var.role_assignments`.
 DESCRIPTION
-  default     = false
 }
 
 variable "role_assignments" {
@@ -18,6 +18,7 @@ variable "role_assignments" {
     definition_lookup_enabled = optional(bool, true)
     use_random_uuid           = optional(bool, false)
   }))
+  default     = {}
   description = <<DESCRIPTION
 Supply a map of objects containing the details of the role assignments to create.
 
@@ -54,7 +55,6 @@ role_assignments = {
 ```
 DESCRIPTION
   nullable    = false
-  default     = {}
 }
 
 variable "wait_for_umi_before_umi_role_assignment_operations" {
